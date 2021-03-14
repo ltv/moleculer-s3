@@ -2,7 +2,17 @@
 
 const pkg = require('../package.json')
 const env = require('./utils/env')
-const awsS3 = require('./provider/aws')
+
+const PROVIDERS = {
+  aws: (config) => {
+    const AWSS3 = require('./provider/aws')
+    return new AWSS3(config)
+  },
+  bizfly: (config) => {
+    const Bizfly = require('./provider/bizfly')
+    return new Bizfly(config)
+  },
+}
 
 const serviceSchema = {
   provider: null,
@@ -50,7 +60,7 @@ const serviceSchema = {
 
   methods: {
     init() {
-      this.provider = new awsS3(this.settings)
+      this.provider = PROVIDERS[this.settings.provider || 'aws'](this.settings)
     },
   },
 
@@ -60,5 +70,10 @@ const serviceSchema = {
 }
 
 module.exports = (provider = 'aws') => {
+  if (typeof provider === 'string') {
+    serviceSchema.settings.provider = provider
+  } else {
+    serviceSchema.provider = provider
+  }
   return serviceSchema
 }

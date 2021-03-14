@@ -1,14 +1,16 @@
 {
   "name": "moleculer-s3",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "moleculer S3 service",
   "main": "index.js",
   "repository": "https://github.com/ltv/moleculer-s3.git",
   "author": "Luc <luc@ltv.vn>",
   "license": "MIT",
+  "types": "index.d.ts",
   "dependencies": {
     "aws-sdk": "^2.863.0",
     "lodash.has": "^4.5.2",
+    "lodash.merge": "^4.6.2",
     "lodash.trim": "^4.5.1",
     "node-exceptions": "^4.0.1"
   },
