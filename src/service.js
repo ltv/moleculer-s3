@@ -50,10 +50,14 @@ const serviceSchema = {
           optional: true,
           default: 'getObject',
         },
+        contentType: {
+          type: 'string',
+          optional: true,
+        }
       },
       handler(ctx) {
-        const { location, expiry, type } = ctx.params
-        return this.provider.getSignedUrl(location, { expiry, type })
+        const { location, expiry, type, contentType } = ctx.params
+        return this.provider.getSignedUrl(location, { expiry, type, contentType })
       },
     },
   },
