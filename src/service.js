@@ -53,11 +53,21 @@ const serviceSchema = {
         contentType: {
           type: 'string',
           optional: true,
-        }
+        },
+        ACL: {
+          type: 'enum',
+          values: ['public-read', 'private'],
+          optional: true,
+        },
       },
       handler(ctx) {
-        const { location, expiry, type, contentType } = ctx.params
-        return this.provider.getSignedUrl(location, { expiry, type, contentType })
+        const { location, expiry, type, contentType, ACL } = ctx.params
+        return this.provider.getSignedUrl(location, {
+          expiry,
+          type,
+          contentType,
+          ACL,
+        })
       },
     },
   },

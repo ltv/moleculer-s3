@@ -1,6 +1,6 @@
 {
   "name": "moleculer-s3",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "moleculer S3 service",
   "main": "index.js",
   "repository": "https://github.com/ltv/moleculer-s3.git",
