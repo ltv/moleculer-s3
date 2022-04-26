@@ -24,13 +24,15 @@ class BaseProvider {
   }
 
   configs(initialConfig) {
-    const { accessKeyId, secretAccessKey, region, endpoint } = initialConfig
+    const { accessKeyId, secretAccessKey, region, endpoint, bucket } =
+      initialConfig
     const configs = merge(
       {
         accessKeyId,
         secretAccessKey,
         region,
         endpoint,
+        bucket,
       },
       this.initialConfig(initialConfig)
     )
