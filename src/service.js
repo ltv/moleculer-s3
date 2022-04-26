@@ -44,9 +44,8 @@ const serviceSchema = {
         location: 'string',
         expiry: 'number|integer|optional',
         type: {
-          type: 'array',
-          items: 'string',
-          enum: ['getObject', 'putObject'],
+          type: 'enum',
+          values: ['getObject', 'putObject'],
           optional: true,
           default: 'getObject',
         },

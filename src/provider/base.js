@@ -126,7 +126,7 @@ class BaseProvider {
    * Returns signed url for an existing file
    */
   async getSignedUrl(location, options = {}) {
-    const { expiry = 60, ACL, type = 'getObject', ContentType } = options
+    const { expiry = 60, ACL, type = 'getObject', contentType } = options
 
     try {
       const params = {
@@ -140,7 +140,7 @@ class BaseProvider {
       }
 
       if (type === 'putObject') {
-        params.ContentType = ContentType
+        params.ContentType = contentType
       }
 
       const result = await this.$s3.getSignedUrlPromise(type, params)
